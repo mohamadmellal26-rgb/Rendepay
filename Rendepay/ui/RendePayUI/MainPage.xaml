@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RendePayUI.MainPage"
+             BackgroundColor="#121212"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Create New Card Panel (Monochrome Dark Style) -->
+            <Border BackgroundColor="#1E1E1E"
+                    Stroke="#333333"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="18">
+                <VerticalStackLayout Spacing="12">
+                    
+                    <!-- Header with Icon -->
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Path Data="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V12H20V18M20,8H4V6H20V8Z"
+                              Fill="#FFFFFF"
+                              WidthRequest="18"
+                              HeightRequest="18"
+                              Aspect="Uniform"
+                              VerticalOptions="Center" />
+                        
+                        <Label Text="Issue New Digital Card"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="#FFFFFF"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <!-- Input Field without Native Underline -->
+                    <Border BackgroundColor="#262626"
+                            Stroke="#333333"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="12,0">
+                        <Entry x:Name="NewCardTitleEntry"
+                               Placeholder="Card Name (e.g., Personal, Shopping...)"
+                               PlaceholderColor="#737373"
+                               TextColor="#FFFFFF"
+                               BackgroundColor="Transparent"
+                               HeightRequest="46" />
+                    </Border>
+
+                    <!-- Primary Action Button (White/Black Contrast) -->
+                    <Border BackgroundColor="#FFFFFF"
+                            StrokeShape="RoundRectangle 10"
+                            StrokeThickness="0"
+                            HeightRequest="45">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCreateCardClicked" />
+                        </Border.GestureRecognizers>
+                        
+                        <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="Create Card Now"
+                                   TextColor="#000000"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                            <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
+                                  Fill="#000000"
+                                  WidthRequest="16"
+                                  HeightRequest="16"
+                                  Aspect="Uniform"
+                                  VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Cards Collection View -->
+            <CollectionView x:Name="CardsListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="15" Margin="0,0,0,25">
+                            
+                            <!-- Beautiful Vibrant Blue Digital Card -->
+                            <Border StrokeShape="RoundRectangle 20"
+                                    Padding="22"
+                                    StrokeThickness="0"
+                                    HeightRequest="210">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#2563EB" Offset="0.0" />
+                                        <GradientStop Color="#1D4ED8" Offset="0.5" />
+                                        <GradientStop Color="#0F172A" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, Auto">
+                                    
+                                    <!-- Card Title & Brand -->
+                                    <Label Grid.Row="0" Grid.Column="0"
+                                           Text="{Binding Title}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="#FFFFFF" />
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                           Text="VISA"
+                                           FontSize="22"
+                                           FontAttributes="Bold"
+                                           TextColor="#FFFFFF"
+                                           HorizontalOptions="End" />
+
+                                    <!-- Balance Display -->
+                                    <VerticalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center">
+                                        <Label Text="AVAILABLE BALANCE"
+                                               FontSize="10"
+                                               CharacterSpacing="1.5"
+                                               FontAttributes="Bold"
+                                               TextColor="#93C5FD" />
+                                        <Label Text="{Binding Balance, StringFormat='${0:N2}'}"
+                                               FontSize="32"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFFFFF" />
+                                    </VerticalStackLayout>
+
+                                    <!-- Card Number & App Label -->
+                                    <Label Grid.Row="2" Grid.Column="0"
+                                           Text="{Binding Code, StringFormat='•••• •••• {0}'}"
+                                           FontSize="14"
+                                           TextColor="#E0F2FE"
+                                           FontFamily="Monospace"
+                                           VerticalOptions="End" />
+
+                                    <Label Grid.Row="2" Grid.Column="1"
+                                           Text="RendePay"
+                                           FontSize="11"
+                                           FontAttributes="Bold"
+                                           CharacterSpacing="1"
+                                           TextColor="#93C5FD"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="End" />
+                                </Grid>
+                            </Border>
+
+                            <!-- Actions & Operations Panel (Monochrome Dark Style) -->
+                            <Border BackgroundColor="#1E1E1E"
+                                    Stroke="#333333"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 15"
+                                    Padding="15">
+                                <VerticalStackLayout Spacing="12">
+                                    
+                                    <Label Text="Financial Transactions"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#A3A3A3" />
+
+                                    <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                                        
+                                        <!-- Transfer Button (White Accent) -->
+                                        <Border Grid.Column="0"
+                                                BackgroundColor="#FFFFFF"
+                                                StrokeShape="RoundRectangle 10"
+                                                StrokeThickness="0"
+                                                HeightRequest="45">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnTransferClicked" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+
+                                            <HorizontalStackLayout Spacing="6" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Label Text="Transfer"
+                                                       TextColor="#000000"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"
+                                                       VerticalOptions="Center" />
+                                                <Path Data="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"
+                                                      Fill="#000000"
+                                                      WidthRequest="14"
+                                                      HeightRequest="14"
+                                                      Aspect="Uniform"
+                                                      VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+
+                                        <!-- Withdraw Button (Dark Grey / White Outline) -->
+                                        <Border Grid.Column="1"
+                                                BackgroundColor="#262626"
+                                                Stroke="#333333"
+                                                StrokeShape="RoundRectangle 10"
+                                                StrokeThickness="1"
+                                                HeightRequest="45">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnWithdrawClicked" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+
+                                            <HorizontalStackLayout Spacing="6" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Label Text="Withdraw"
+                                                       TextColor="#FFFFFF"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"
+                                                       VerticalOptions="Center" />
+                                                <Path Data="M19,13H5V11H19V13Z"
+                                                      Fill="#FFFFFF"
+                                                      WidthRequest="14"
+                                                      HeightRequest="14"
+                                                      Aspect="Uniform"
+                                                      VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+
+                                    </Grid>
+
+                                </VerticalStackLayout>
+                            </Border>
+
+                        </VerticalStackLayout>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

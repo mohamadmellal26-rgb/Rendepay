@@ -1,0 +1,208 @@
+/* ==========================================
+   Rendepay Login Page Stylesheet
+   Monochrome Style (#333 Theme)
+   ========================================== */
+
+.rendepay-login-page {
+  direction: rtl;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.login-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 440px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* زر العودة للرئيسية */
+.btn-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: #666666;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: -0.5rem;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+
+.btn-back-link:hover {
+  color: #333333;
+}
+
+/* ترويسة النموذج */
+.login-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.system-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #333333;
+  background-color: #f0f0f0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #333333;
+  margin: 0.25rem 0 0 0;
+}
+
+.login-subtitle {
+  font-size: 0.85rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* تنبيه الخطأ */
+.login-error-alert {
+  background-color: #f5f5f5;
+  border-right: 3px solid #333333;
+  color: #333333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+/* نموذج الإدخال */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.login-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.login-form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  right: 0.75rem;
+  color: #888888;
+  pointer-events: none;
+}
+
+.login-input, .login-select {
+  width: 100%;
+  padding: 0.65rem 2.5rem 0.65rem 0.75rem;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  outline: none;
+  background-color: #ffffff;
+  color: #333333;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.login-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.login-input:focus, .login-select:focus {
+  border-color: #333333;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  left: 0.75rem;
+  background: none;
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password-btn:hover {
+  color: #333333;
+}
+
+/* زر إرسال النموذج */
+.btn-submit-login {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #333333;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-submit-login:hover:not(:disabled) {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.btn-submit-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* تذييل النموذج */
+.login-footer {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #888888;
+}
+
+.security-notice {
+  font-weight: 600;
+  color: #666666;
+}

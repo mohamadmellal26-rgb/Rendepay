@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           x:Class="RendePayUI.Popups.TransactionPopup"
+           Color="Transparent">
+
+    <Border BackgroundColor="#1E1E1E"
+            Stroke="#333333"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 20"
+            Padding="20"
+            WidthRequest="320"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+        <VerticalStackLayout Spacing="16">
+
+            <!-- Title -->
+            <Label x:Name="TitleLabel"
+                   Text="Transaction"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="#FFFFFF"
+                   HorizontalOptions="Center" />
+
+            <!-- Input 1: Target Card (Visible only in Transfer) -->
+            <Border x:Name="TargetCardContainer"
+                    BackgroundColor="#262626"
+                    Stroke="#333333"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10"
+                    Padding="10,0">
+                <Entry x:Name="TargetCardEntry"
+                       Placeholder="Target Card Code"
+                       PlaceholderColor="#737373"
+                       TextColor="#FFFFFF"
+                       Keyboard="Numeric"
+                       HeightRequest="44" />
+            </Border>
+
+            <!-- Input 2: Amount -->
+            <Border BackgroundColor="#262626"
+                    Stroke="#333333"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10"
+                    Padding="10,0">
+                <Entry x:Name="AmountEntry"
+                       Placeholder="Amount ($)"
+                       PlaceholderColor="#737373"
+                       TextColor="#FFFFFF"
+                       Keyboard="Numeric"
+                       HeightRequest="44" />
+            </Border>
+
+            <!-- Error Label -->
+            <Label x:Name="ErrorLabel"
+                   TextColor="#EF4444"
+                   FontSize="12"
+                   IsVisible="False"
+                   HorizontalOptions="Center" />
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="10" Margin="0,5,0,0">
+
+                <Border Grid.Column="0"
+                        BackgroundColor="#262626"
+                        Stroke="#333333"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 10"
+                        HeightRequest="42">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCancelClicked" />
+                    </Border.GestureRecognizers>
+                    <Label Text="Cancel"
+                           TextColor="#FFFFFF"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+
+                <Border Grid.Column="1"
+                        BackgroundColor="#FFFFFF"
+                        StrokeShape="RoundRectangle 10"
+                        StrokeThickness="0"
+                        HeightRequest="42">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnConfirmClicked" />
+                    </Border.GestureRecognizers>
+                    <Label x:Name="ConfirmButtonLabel"
+                           Text="Confirm"
+                           TextColor="#000000"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </Border>
+
+</mct:Popup>
